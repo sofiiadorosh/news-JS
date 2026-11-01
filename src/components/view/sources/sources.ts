@@ -1,20 +1,28 @@
 import './sources.css';
+import { Source } from '../../../types';
+
+type SourceItem = Readonly<Pick<Source, 'id' | 'name'>>;
 
 class Sources {
-    draw(data) {
+    public draw(data: SourceItem[]): void {
         const fragment = document.createDocumentFragment();
-        const sourceItemTemp = document.querySelector('#sourceItemTemp');
+        const sourceItemTemp = document.querySelector<HTMLTemplateElement>('#sourceItemTemp');
+        const sourcesContainer = document.querySelector<HTMLElement>('.sources');
+
+        if (!sourceItemTemp || !sourcesContainer) return;
 
         data.forEach((item) => {
-            const sourceClone = sourceItemTemp.content.cloneNode(true);
+            const sourceClone = sourceItemTemp.content.cloneNode(true) as DocumentFragment;
 
-            sourceClone.querySelector('.source__item-name').textContent = item.name;
-            sourceClone.querySelector('.source__item').setAttribute('data-source-id', item.id);
+            const name = sourceClone.querySelector('.source__item-name');
+            if (name) name.textContent = item.name;
+
+            sourceClone.querySelector('.source__item')?.setAttribute('data-source-id', item.id);
 
             fragment.append(sourceClone);
         });
 
-        document.querySelector('.sources').append(fragment);
+        sourcesContainer.append(fragment);
     }
 }
 
