@@ -1,35 +1,270 @@
+:root {
+    --color-black: #111317;
+    --color-white: #ffffff;
+    --color-graphite: #1b1e24;
+    --color-slate: #242832;
+    --color-steel: #2c313b;
+    --color-mist: #eef0f4;
+    --color-gray: #9aa1ad;
+    --color-green: #5ad67d;
+    --color-blue: #30c5ff;
+
+    --color-text: var(--color-mist);
+    --color-text-muted: var(--color-gray);
+    --color-text-inverse: var(--color-white);
+    --color-background: var(--color-black);
+    --color-surface: var(--color-graphite);
+    --color-surface-hover: var(--color-slate);
+    --color-surface-light: var(--color-white);
+    --color-border: var(--color-steel);
+    --color-accent: var(--color-green);
+    --color-action: var(--color-blue);
+    --color-accent-soft: rgba(90, 214, 125, 0.12);
+    --color-action-soft: rgba(48, 197, 255, 0.08);
+    --color-accent-shadow: rgba(90, 214, 125, 0.35);
+    --color-overlay: rgba(0, 0, 0, 0.75);
+
+    --font-body: 'Segoe UI', Roboto, Arial, sans-serif;
+
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: clamp(1.75rem, 6vw, 2.75rem);
+
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+
+    --line-height-tight: 1.3;
+    --line-height-base: 1.5;
+
+    --letter-spacing-tight: -0.02em;
+    --letter-spacing-wide: 0.06em;
+    --letter-spacing-wider: 0.08em;
+
+    --space-2xs: 4px;
+    --space-xs: 8px;
+    --space-sm: 12px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-2xl: 48px;
+
+    --container-width: 1280px;
+    --container-width-wide: 1600px;
+    --container-min-width: 320px;
+
+    --border-width: 1px;
+    --border: var(--border-width) solid var(--color-border);
+    --border-dashed: var(--border-width) dashed var(--color-border);
+    --radius: 12px;
+    --radius-pill: 999px;
+
+    --shadow-card: 0 12px 24px -12px var(--color-accent-shadow);
+
+    --transition: 200ms ease;
+    --transition-slow: 400ms ease;
+
+    --lift-offset: -2px;
+    --lift-offset-card: -4px;
+    --zoom-scale: 1.06;
+    --press-scale: 1.05;
+
+    --icon-size: 20px;
+    --course-logo-height: 24px;
+    --sources-height: 168px;
+    --sources-height-tablet: 220px;
+    --news-image-ratio: 16 / 9;
+    --news-description-lines: 4;
+}
+
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    color: #fff;
-    background: #17181c;
-    font-family: sans-serif;
+    margin: 0;
+    width: 100%;
+    min-width: var(--container-min-width);
+    font-family: var(--font-body);
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-base);
+    color: var(--color-text);
+    background-color: var(--color-background);
 }
 
-header {
-    padding: 10px 30px;
+img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
-header h1 {
-    font-size: 40px;
-    font-weight: 800;
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
-footer {
-    height: 100px;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    margin: 0 auto;
+    padding: var(--space-lg) var(--space-md);
+    max-width: var(--container-width);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    margin-bottom: var(--space-xl);
+    padding: var(--space-lg);
+    background-image: linear-gradient(135deg, var(--color-accent-soft), var(--color-action-soft));
+    border: var(--border);
+    border-radius: var(--radius);
+}
+
+.header__title {
+    margin-bottom: var(--space-2xs);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-extrabold);
+    line-height: var(--line-height-tight);
+    letter-spacing: var(--letter-spacing-tight);
+}
+
+.header__accent {
+    color: var(--color-accent);
+}
+
+.header__subtitle {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+}
+
+.main {
+    flex: 1;
+    margin-bottom: var(--space-xl);
+}
+
+.sources-section {
+    margin-bottom: var(--space-xl);
+}
+
+.section-title {
+    margin-bottom: var(--space-sm);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-wider);
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+}
+
+.footer {
+    padding: var(--space-md) var(--space-lg);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-sm) var(--space-lg);
+    background-color: var(--color-surface);
+    border: var(--border);
+    border-radius: var(--radius);
+}
+
+.footer__github {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-weight: var(--font-weight-semibold);
+    transition: color var(--transition);
+}
+
+.footer__github:hover,
+.footer__github:focus-visible {
+    color: var(--color-accent);
+}
+
+.footer__icon {
+    width: var(--icon-size);
+    height: var(--icon-size);
+}
+
+.footer__copyright {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: var(--space-2xs);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
 }
-footer .copyright {
-    font-size: 14px;
-    color: #333;
-    text-align: center;
+
+.footer__link {
+    color: var(--color-text);
+    transition: color var(--transition);
 }
-footer .copyright a {
-    color: #444;
+
+.footer__link:hover,
+.footer__link:focus-visible {
+    color: var(--color-accent);
 }
-footer .copyright a:hover {
-    color: #555;
+
+.footer__course {
+    padding: var(--space-2xs) var(--space-sm);
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--color-surface-light);
+    border-radius: var(--radius-pill);
+    transition: transform var(--transition);
 }
-footer .copyright:before {
-    content: '©';
+
+.footer__course:hover,
+.footer__course:focus-visible {
+    transform: scale(var(--press-scale));
+}
+
+.footer__course-logo {
+    height: var(--course-logo-height);
+    aspect-ratio: 552.8 / 205.3;
+}
+
+@media (min-width: 768px) {
+    .header__subtitle {
+        font-size: var(--font-size-md);
+    }
+}
+
+@media (min-width: 1600px) {
+    .container {
+        max-width: var(--container-width-wide);
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: var(--space-md);
+    }
+
+    .footer {
+        flex-direction: column;
+        text-align: center;
+    }
 }
