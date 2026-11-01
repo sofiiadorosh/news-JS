@@ -32,3 +32,28 @@ export interface NewsResponse {
     totalResults: number;
     articles: Article[];
 }
+
+
+export enum Endpoint {
+    Sources = 'sources',
+    Everything = 'everything',
+}
+
+export enum HttpStatus {
+    Unauthorized = 401,
+    NotFound = 404,
+}
+
+export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
+
+export interface LoaderOptions {
+    apiKey: string;
+    sources: string;
+}
+
+export interface RequestParams {
+    endpoint: Endpoint;
+    options?: Partial<LoaderOptions>;
+}
+
+export type Callback<T> = (data: T) => void;
