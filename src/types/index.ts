@@ -33,7 +33,6 @@ export interface NewsResponse {
     articles: Article[];
 }
 
-
 export enum Endpoint {
     Sources = 'sources',
     Everything = 'everything',
